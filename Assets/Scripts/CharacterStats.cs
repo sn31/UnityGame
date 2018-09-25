@@ -6,6 +6,8 @@ public class CharacterStat
     public float BaseMovementRadius; //Character's maximum movement radius
     public float BaseArmor; //Character's base armor
     public float BaseActionPoint = 2; //Character's maximum number of actions - Usually 2 points but Ryan said have this just in case...
+    public bool TurnAvailability = true;
+    public bool IsDead = false;
 
     private readonly List<StatModifer> statModifers; //List of different modifiers added to the characters, which will affect one or more base values.
 
@@ -36,11 +38,25 @@ public class CharacterStat
         for (int i = 0; i < statModifers.Count; i++)
         {
             finalHealth += statModifers[i].HealthValue;
+            if (finalHealth <=0)
+            {
+                IsDead = true;
+            }
             finalMovementRadius += statModifers[i].MovementRadiusValue;
             finalArmor += statModifers[i].ArmorValue;
+            finalActionPoint += statModifers[i].ActionPointValue;
+
+            if (finalActionPoint == 0)
+            {
+                TurnAvailability = false;
+                finalActionPoint = 2;
+            }
+
+
+
             if (finalActionPoint = 1 && statModifers[i].ActionPointValue == -1 ) //If action point is going to be zero, just reset it to maximum action point of 2.
             {
-				//Change to other player somehow in here...
+                TurnAvailability = false;//Change to other player somehow in here...
 				finalActionPoint = 2; 
 			}
             else
@@ -51,6 +67,10 @@ public class CharacterStat
 		}
 
     }
+	public CharacterStat EndTurn()
+	{
+		BaseActionPointValue = 0;
+	}
 
 }
 

@@ -14,6 +14,11 @@ public class StatModifer
         ArmorValue = armorValue;
         ActionPointValue = actionPointValue;
     }
+
+    public StatModifier EndTurn()
+    {
+        ActionPointValue = 0;
+    }
 }
 
 
@@ -22,30 +27,30 @@ public class StatModifer
 
 //Knight moves 2 steps and gets attacked.
 
-CharacterStat Knight = new CharacterStat(100.00f, 30.00f, 25.00f, 2);
+//CharacterStat Knight = new CharacterStat(100.00f, 30.00f, 25.00f, 2);
 
-Knight.AddModifier(MoveModifer);
-Knight.AddModifier(MoveModifer);
-Knight.AddModifier(AttackedModifer);
+//Knight.AddModifier(MoveModifer);
+//Knight.AddModifier(MoveModifer);
+//Knight.AddModifier(AttackedModifer);
 
-statModifiers = {MoveModifier, MoveModfier, AttackedModifier}
-//i = 0 - Moved once
-float finalHealth = 100;
-float finalMovementRadius = 30;
-float finalArmor = 25;
-float finalActionPoint = 1;
+//statModifiers = {MoveModifier, MoveModfier, AttackedModifier}
+////i = 0 - Moved once
+//float finalHealth = 100;
+//float finalMovementRadius = 30;
+//float finalArmor = 25;
+//float finalActionPoint = 1;
 
-//i = 1 - Moved twice
-float finalHealth = 100;
-float finalMovementRadius = 30;
-float finalArmor = 25;
-float finalActionPoint = 0;
+////i = 1 - Moved twice
+//float finalHealth = 100;
+//float finalMovementRadius = 30;
+//float finalArmor = 25;
+//float finalActionPoint = 0;
 
-//i = 2 - Gets attacked
-float finalHealth = 95;
-float finalMovementRadius = 30;
-float finalArmor = 25;
-float finalActionPoint = 0;
+////i = 2 - Gets attacked
+//float finalHealth = 95;
+//float finalMovementRadius = 30;
+//float finalArmor = 25;
+//float finalActionPoint = 0;
 
-List<float> finalTurnStats = Knight.CalculateFinalValue();
-finalTurnStats = {95;30;25;0}
+//List<float> finalTurnStats = Knight.CalculateFinalValue();
+//finalTurnStats = {95;30;25;0}
