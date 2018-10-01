@@ -22,6 +22,10 @@ public class CharacterTemplate : MonoBehaviour
 // Attack target character character script.
     public CharacterTemplate targetCharScript;
 
+    // Animator variable
+    public Animator animator;
+    public float damageDelay;
+
   
 
 // Movement variables.
@@ -31,8 +35,6 @@ public class CharacterTemplate : MonoBehaviour
     public int actionPoints = 2;
 // Reference to the UI's health bar.
     // public Slider healthSlider;                                 
-
-    // Animator anim;                                              // Reference to the Animator component.
     // AudioSource playerAudio;                                    // Reference to the AudioSource component.
     // PlayerMovement playerMovement;                              // Reference to the player's movement.
     // PlayerShooting playerShooting;                              // Reference to the PlayerShooting script.
@@ -45,6 +47,13 @@ public class CharacterTemplate : MonoBehaviour
 
     void Start ()
     {
+      // Sets booleans to default values
+      isDead = false;
+
+      // Grabs the animator component.
+      animator = gameObject.GetComponent<Animator>();
+
+
         // Setting up the references.
         // anim = GetComponent <Animator> ();
         // playerAudio = GetComponent <AudioSource> ();
@@ -55,6 +64,10 @@ public class CharacterTemplate : MonoBehaviour
 
     void Update ()
     {
+      if (damaged)
+      {
+        damaged = false;
+      }
         // // If the player has just been damaged...
         // if(damaged)
         // {
@@ -76,6 +89,9 @@ public class CharacterTemplate : MonoBehaviour
     public void TakeDamage (int amount)
     {
         damaged = true;
+        animator.SetTrigger("attacked");
+
+        // Trigger damaged animation here
 
         int currentDamage = amount;
         currentDamage = currentDamage - armor;
@@ -108,10 +124,16 @@ public class CharacterTemplate : MonoBehaviour
         // playerAudio.Play ();
     }
 
-    public void AttackTarget(GameObject target)
+    public IEnumerator AttackTarget(GameObject target)
     {
         Debug.Log(gameObject.name + " attacked " + target.name);
         targetCharScript = target.GetComponent<CharacterTemplate>();
+
+        // Attack animation here
+        animator.SetTrigger("attack");
+
+        yield return new WaitForSecondsRealtime(damageDelay);
+
         targetCharScript.TakeDamage(attackDamage);
 
         // Trigger attack animation
@@ -124,6 +146,9 @@ public class CharacterTemplate : MonoBehaviour
         {
             // Set the death flag so this function won't be called again.
             isDead = true;
+
+            animator.SetTrigger("dead");
+            
 
             // Turn off any remaining shooting effects.
             // playerShooting.DisableEffects ();

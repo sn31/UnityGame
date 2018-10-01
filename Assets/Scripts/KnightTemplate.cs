@@ -18,6 +18,8 @@ public class KnightTemplate : MonoBehaviour {
 // Base character damage.
 	public int attackDamage = 20;
 
+	public float damageDelay = 1.0f;
+
 	// Use this for initialization
 	void Awake () {
 		healthScript = GetComponent<CharacterTemplate>();
@@ -32,5 +34,7 @@ public class KnightTemplate : MonoBehaviour {
 		healthScript.movementRadius = movementRadius;
 
 		healthScript.attackDamage = attackDamage;
+
+		healthScript.damageDelay = damageDelay;
 	}
 }

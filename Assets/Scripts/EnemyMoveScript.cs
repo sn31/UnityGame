@@ -11,6 +11,9 @@ public class EnemyMoveScript : MonoBehaviour
   // Variable to hold NavMeshAgent
   public NavMeshAgent agent;
 
+  // Variable to hold player character stat script.
+  public CharacterTemplate playerCharTemp;
+
   // Boolean to hold if this enemy is alerted to the presence of the player.
   public bool isAlerted;
 
@@ -45,12 +48,12 @@ public class EnemyMoveScript : MonoBehaviour
   // Variable for move distance.
   public float movementRadius;
 
-  // Player character character script.
-  public CharacterTemplate playerCharTemp;
-
 // Enum for unit state.
   public enum UnitState {None, Moving, Attacking};
   public UnitState currentState;
+
+  // Grabs the animator of this enemy unit.
+    public Animator animator;
 
 	// Use this for initialization
 	void Start () 
@@ -63,6 +66,9 @@ public class EnemyMoveScript : MonoBehaviour
 
     // Grabs the enemy CharacterTemplate script
     charTemplate = GetComponent<CharacterTemplate>();
+
+    // Gets the animator component.
+    animator = gameObject.GetComponent<Animator>();
 
     // Sets the default state of isAlerted bool to false;
     isAlerted = false;
@@ -133,16 +139,21 @@ public class EnemyMoveScript : MonoBehaviour
       if (playerCharTemp.isDead == false)
       {
         // Grabs the distance between this enemy and a PC in the array.
-      float distance = Vector3.Distance(transform.position, PC.transform.position);
+        float distance = Vector3.Distance(transform.position, PC.transform.position);
 
         if (distance < nearestPCDistance)
         {
           nearestPC = PC;
           nearestPCDistance = distance;
         }
+        MoveToNearestPC();
+      }
+      else
+      {
+        Debug.Log("NO TARGET");
+        StopUnit();
       }
     }
-    MoveToNearestPC();
   }
 
   public void MoveToNearestPC()
@@ -199,6 +210,7 @@ public class EnemyMoveScript : MonoBehaviour
 
       agent.destination = nearestPC.transform.position;
     }
+    animator.SetBool("running", true);
   }
 
   // Function to trigger enemy attack. Enemy attack scripts will be triggered here.
@@ -208,9 +220,13 @@ public class EnemyMoveScript : MonoBehaviour
     agent.isStopped = true;
     agent.ResetPath();
     agent.isStopped = false;
+    animator.SetBool("running", false);
+
+    // yield return here to wait for rotate to finish before continuing with the function.
+    yield return StartCoroutine(RotateTowardPlayer());
 
     // ** Add attack trigger here.
-    charTemplate.AttackTarget(nearestPC);
+    StartCoroutine(charTemplate.AttackTarget(nearestPC));
 
     // Adjust this wait time as needed for enemy attack animation to finish.
     yield return new WaitForSecondsRealtime(2);
@@ -228,11 +244,26 @@ public class EnemyMoveScript : MonoBehaviour
     agent.isStopped = true;
     agent.ResetPath();
     agent.isStopped = false;
+    animator.SetBool("running", false);
     currentState = UnitState.None;
     inAction = false;
     agent.stoppingDistance = 0;
     unitTurnOver = true;
     turnManager.currentEnemyDone = true;
     Debug.Log("Move over");
+  }
+
+  // Function to make the enemy rotate towards the target player.
+  IEnumerator RotateTowardPlayer()
+  {
+    float elaspedTime = 0f;
+    Vector3 direction = (nearestPC.transform.position - transform.position).normalized;
+    Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+    while (elaspedTime < 1f)
+    {
+      transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * 2.5f);
+      elaspedTime += Time.deltaTime;
+      yield return null;
+    }
   }
 }
