@@ -37,6 +37,9 @@ public class TurnManagerScript : MonoBehaviour
   // Variable to hold enemy move script.
   public EnemyMoveScript enemyMoveScript;
 
+  // Variable to hold player character template
+  public CharacterTemplate playerCharTemp;
+
 	// Use this for initialization.
 	void Start () 
   {
@@ -108,6 +111,20 @@ public class TurnManagerScript : MonoBehaviour
       currentPCIndex = 0;
     }
     currentPC = pcList[currentPCIndex];
+    playerCharTemp = currentPC.GetComponent<CharacterTemplate>();
+
+    while (playerCharTemp.isDead == true)
+    {
+      // ** BUG ** DEAD GUY STILL GETS SELECTED;
+      // ** NEED TO CHECK LOSE CONDITION HERE **
+      currentPCIndex++;
+      if (currentPCIndex == pcList.Length)
+      {
+        currentPCIndex = 0;
+      }
+      currentPC = pcList[currentPCIndex];
+      playerCharTemp = currentPC.GetComponent<CharacterTemplate>();
+    }
 
     moveScript = currentPC.GetComponent<MoveToClickPoint>();
     moveScript.SetCharacterActive();
@@ -152,6 +169,23 @@ public class TurnManagerScript : MonoBehaviour
     // ** NEED TO CHANGE THIS TO CHECK FOR ALIVE CHARACTERS ONCE STAT SHEET IS DONE.
     currentPCIndex = 0;
 		currentPC = pcList[0];
+
+    // Checks for death state.
+    playerCharTemp = currentPC.GetComponent<CharacterTemplate>();
+
+    while (playerCharTemp.isDead == true)
+    {
+      // ** BUG ** DEAD GUY STILL GETS SELECTED;
+      // ** NEED TO CHECK LOSE CONDITION HERE **
+      currentPCIndex++;
+      if (currentPCIndex == pcList.Length)
+      {
+        currentPCIndex = 0;
+      }
+      currentPC = pcList[currentPCIndex];
+      playerCharTemp = currentPC.GetComponent<CharacterTemplate>();
+    }
+
 
     //Sets the first PC to active state.
     moveScript = currentPC.GetComponent<MoveToClickPoint>();
