@@ -1238,7 +1238,7 @@ GameObject:
   m_Layer: 0
   m_Name: PlayerSpawner
   m_TagString: Untagged
-  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1858,7 +1858,7 @@ GameObject:
   m_Layer: 0
   m_Name: EnemySpawner (1)
   m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2864,7 +2864,7 @@ GameObject:
   m_Layer: 0
   m_Name: ~Spawner
   m_TagString: Untagged
-  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2882,9 +2882,10 @@ MonoBehaviour:
   Radius: 4
   ToSpawnPlayer:
   - {fileID: 1426175708880172, guid: 98597f1790bc443c698c2ac7c304f66f, type: 2}
-  - {fileID: 100048, guid: 272ec112bddec644a8af6599107e74f7, type: 2}
+  - {fileID: 1069497630209726, guid: f9601923c3a0f4e438454ecc30378ee4, type: 2}
   - {fileID: 1426175708880172, guid: 98597f1790bc443c698c2ac7c304f66f, type: 2}
   - {fileID: 100048, guid: 272ec112bddec644a8af6599107e74f7, type: 2}
+  - {fileID: 1135682298469568, guid: 484c4be21ce114b408b775e519cd9e30, type: 2}
   SpawnLocationPlayer: {fileID: 1043652913}
   AverageEnemies: 4
   AverageEnemyRange: 2
@@ -2987,7 +2988,7 @@ GameObject:
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
