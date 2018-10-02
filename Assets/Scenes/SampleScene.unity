@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657892, g: 0.49641287, b: 0.5748174, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -837,6 +837,7 @@ MonoBehaviour:
   currentEnemyDone: 0
   currentEnemyIndex: 0
   enemyMoveScript: {fileID: 0}
+  playerCharTemp: {fileID: 0}
 --- !u!4 &882848579
 Transform:
   m_ObjectHideFlags: 0
@@ -1035,7 +1036,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1015257573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1048,9 +1049,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cloud: {fileID: 1567454111459138, guid: 6835ffc37afd34de5a6351e1a4f5f766, type: 2}
-  width: 10
-  height: 10
-  cloudSize: 5
+  width: 128
+  height: 128
+  cloudSize: 3
 --- !u!4 &1015257574
 Transform:
   m_ObjectHideFlags: 0
@@ -1058,7 +1059,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1015257572}
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 267.9, y: 9.934479, z: 192.21117}
+  m_LocalPosition: {x: 50, y: 5, z: 50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2264,7 +2265,6 @@ MonoBehaviour:
   currentAction: 0
   turnManager: {fileID: 0}
   IsPlayerTurn: 0
-  CamMovement: 0
 --- !u!1001 &1814062276
 Prefab:
   m_ObjectHideFlags: 0
