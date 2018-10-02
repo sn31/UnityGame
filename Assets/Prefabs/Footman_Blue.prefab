@@ -1042,6 +1042,7 @@ MonoBehaviour:
   targetCharScript: {fileID: 0}
   animator: {fileID: 0}
   damageDelay: 0
+  Portrait: {fileID: 2800000, guid: 6c6c550838f2b406490a5fa4e8d37e23, type: 3}
   movementRadius: 0
   actionPoints: 2
   isDead: 0
@@ -1101,7 +1102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 177dd27c53d23ab4e95e7327d0c9ad9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 1000
   armor: 10
   minDamage: 5
   dodgeChance: 20

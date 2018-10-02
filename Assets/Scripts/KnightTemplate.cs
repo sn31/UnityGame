@@ -8,7 +8,7 @@ public class KnightTemplate : MonoBehaviour {
 	CharacterTemplate healthScript;
 
 // Base character health.
-	public int maxHealth = 100;
+	public int maxHealth = 10000;
 // Base character armor.
 	public int armor = 10;
 	public int minDamage = 5;
