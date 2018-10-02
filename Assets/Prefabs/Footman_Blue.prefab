@@ -833,7 +833,7 @@ Animator:
   m_GameObject: {fileID: 100048}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: d06688f72e50aaa48b0dea3435bfe092, type: 3}
-  m_Controller: {fileID: 9100000, guid: 760f14b3eda054e1d9302c75c1ba5ca6, type: 2}
+  m_Controller: {fileID: 9100000, guid: 18f9a26bb87304cf78715f9f43986e3e, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1039,8 +1039,13 @@ MonoBehaviour:
   dodgeChance: 0
   attackDamage: 0
   targetCharScript: {fileID: 0}
+
+  animator: {fileID: 0}
+  damageDelay: 0
   movementRadius: 0
   actionPoints: 2
+  isDead: 0
+  damaged: 0
 --- !u!114 &114105304950408656
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1057,6 +1062,7 @@ MonoBehaviour:
   isCharacterActive: 0
   isCharacterMoving: 0
   line: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!114 &114359568831115150
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1101,6 +1107,7 @@ MonoBehaviour:
   dodgeChance: 20
   movementRadius: 6
   attackDamage: 20
+  damageDelay: 1
 --- !u!120 &120710692649399078
 LineRenderer:
   m_ObjectHideFlags: 1

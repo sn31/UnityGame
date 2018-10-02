@@ -2589,7 +2589,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Radius: 4
   ToSpawnPlayer:
-  - {fileID: 1252427878642282, guid: 3e4a81e1f51af4c899304ff69e09418d, type: 2}
+  - {fileID: 100048, guid: 272ec112bddec644a8af6599107e74f7, type: 2}
   SpawnLocationPlayer: {fileID: 1043652913}
   AverageEnemies: 4
   AverageEnemyRange: 2

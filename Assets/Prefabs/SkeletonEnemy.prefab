@@ -1277,7 +1277,7 @@ Animator:
   m_GameObject: {fileID: 1715936807102026}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 5a35c5f0a89b9654d897ccd7c8f81bd0, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c5dbdb2758fd495a99a18b45f1be8b4, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1303,6 +1303,7 @@ MonoBehaviour:
   dodgeChance: 20
   movementRadius: 6
   attackDamage: 50
+  damageDelay: 1
 --- !u!114 &114854809041482872
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1321,8 +1322,12 @@ MonoBehaviour:
   dodgeChance: 0
   attackDamage: 0
   targetCharScript: {fileID: 0}
+  animator: {fileID: 0}
+  damageDelay: 0
   movementRadius: 0
   actionPoints: 2
+  isDead: 0
+  damaged: 0
 --- !u!114 &114868363293604900
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1335,6 +1340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
+  playerCharTemp: {fileID: 0}
   isAlerted: 0
   inAction: 0
   unitTurnOver: 0
@@ -1347,6 +1353,7 @@ MonoBehaviour:
   pcList: []
   movementRadius: 0
   currentState: 0
+  animator: {fileID: 0}
 --- !u!137 &137135014751052812
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
