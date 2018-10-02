@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // **NOTES**
 // *NEED TO CHANGE StartPlayerTurn() TO CHECK FOR ALIVE CHARACTERS FOR INITIAL INDEX ONCE STAT SHEET IS DONE.
@@ -166,7 +167,6 @@ public class TurnManagerScript : MonoBehaviour
     playerCamera.IsPlayerTurn = true;
 
     //Sets the current character to first character.
-    // ** NEED TO CHANGE THIS TO CHECK FOR ALIVE CHARACTERS ONCE STAT SHEET IS DONE.
     currentPCIndex = 0;
 		currentPC = pcList[0];
 
@@ -176,7 +176,8 @@ public class TurnManagerScript : MonoBehaviour
     while (playerCharTemp.isDead == true)
     {
       // ** BUG ** DEAD GUY STILL GETS SELECTED;
-      // ** NEED TO CHECK LOSE CONDITION HERE **
+      // StartCoroutine(CheckGameOver());
+      
       currentPCIndex++;
       if (currentPCIndex == pcList.Length)
       {
@@ -221,5 +222,35 @@ public class TurnManagerScript : MonoBehaviour
       enemyMoveScript.FindNearestPC();
     }
     currentEnemyIndex++;
+  }
+
+  public IEnumerator CheckGameOver()
+  {
+    bool gameOver = false;
+
+    foreach (var PC in pcList)
+    {
+      CharacterTemplate template = PC.GetComponent<CharacterTemplate>();
+      if (template.isDead == true)
+      {
+        gameOver = true;
+      }
+      else
+      {
+        gameOver = false;
+      }
+    }
+
+    if (gameOver == true)
+    {
+      yield return StartCoroutine(SetGameOver());
+    }
+  }
+
+  public IEnumerator SetGameOver()
+  {
+    Debug.Log("GAME OVER!");
+    yield return new WaitForSecondsRealtime(4);
+    SceneManager.LoadScene( SceneManager.GetActiveScene().name );
   }
 }

@@ -26,6 +26,9 @@ public class CharacterTemplate : MonoBehaviour
     public Animator animator;
     public float damageDelay;
 
+// Turn Manager variable.
+    public TurnManagerScript turnManager;
+
   
 
 // Movement variables.
@@ -52,6 +55,9 @@ public class CharacterTemplate : MonoBehaviour
 
       // Grabs the animator component.
       animator = gameObject.GetComponent<Animator>();
+
+      // Grabs the turn manager.
+      turnManager = GameObject.Find("TurnManager").GetComponent<TurnManagerScript>();
 
 
         // Setting up the references.
@@ -146,8 +152,8 @@ public class CharacterTemplate : MonoBehaviour
         {
             // Set the death flag so this function won't be called again.
             isDead = true;
-
-            animator.SetTrigger("dead");
+            animator.SetTrigger("Death");
+            StartCoroutine(turnManager.CheckGameOver());
             
 
             // Turn off any remaining shooting effects.
