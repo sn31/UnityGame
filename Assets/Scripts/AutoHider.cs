@@ -8,15 +8,21 @@ public class AutoHider : MonoBehaviour {
     public float maxDistance = 100;
     public bool doShow = true;
     public bool doScale = false;
-	
-	// Update is called once per frame
-	void Update () {
+
+    void Start()
+    {
+        Debug.Log("Here");
+    }
+    // Update is called once per frame
+    void Update () {
         disappearCheck();
 	}
     private void disappearCheck()
     {
+        int counter = 0;
         foreach (Transform child in mapObj.transform)
         {
+            counter++;
             float distance = Vector3.Distance(child.position, transform.position);
             if (distance < desiredDistance) //the child cloud is within the desirable distance
             {
@@ -69,5 +75,6 @@ public class AutoHider : MonoBehaviour {
                 }
             }
         }
+        Debug.Log(counter);
     }
 }
