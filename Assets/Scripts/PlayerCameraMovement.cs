@@ -322,49 +322,49 @@ public class PlayerCameraMovement : MonoBehaviour
 	//Move camera when mouse is near the edge of screen.
 	void MoveCamWithMouse()
 	{	
-		camPos = transform.position;
-		if (Input.mousePosition.x > screenWidth - 30)
-		{
-			currentStatus = Status.Panning;
-			ClearFollowTarget();
+		// camPos = transform.position;
+		// if (Input.mousePosition.x > screenWidth - 30)
+		// {
+		// 	currentStatus = Status.Panning;
+		// 	ClearFollowTarget();
 
-			//Desired direction. Y = 0 because we don't want to change Y. We use the local X and Z axis to normalize into the right direction without changing height
-			camPos = Vector3.Normalize(new Vector3(transform.right.x, 0, transform.right.z));
+		// 	//Desired direction. Y = 0 because we don't want to change Y. We use the local X and Z axis to normalize into the right direction without changing height
+		// 	camPos = Vector3.Normalize(new Vector3(transform.right.x, 0, transform.right.z));
 
-			transform.position += camPos * Time.deltaTime * camMoveSpeed;
-		}
-		else if (Input.mousePosition.x < 30)
-		{
-			currentStatus = Status.Panning;
-			ClearFollowTarget();
+		// 	transform.position += camPos * Time.deltaTime * camMoveSpeed;
+		// }
+		// else if (Input.mousePosition.x < 30)
+		// {
+		// 	currentStatus = Status.Panning;
+		// 	ClearFollowTarget();
 			
-			camPos = Vector3.Normalize(new Vector3(-transform.right.x, 0, -transform.right.z));
+		// 	camPos = Vector3.Normalize(new Vector3(-transform.right.x, 0, -transform.right.z));
 
-			transform.position += camPos * Time.deltaTime * camMoveSpeed;
-		}
+		// 	transform.position += camPos * Time.deltaTime * camMoveSpeed;
+		// }
 			
-		else if (Input.mousePosition.y > screenHeight - 30)
-		{
-			currentStatus = Status.Panning;
-			ClearFollowTarget();
+		// else if (Input.mousePosition.y > screenHeight - 30)
+		// {
+		// 	currentStatus = Status.Panning;
+		// 	ClearFollowTarget();
 
-			camPos = Vector3.Normalize(new Vector3(transform.forward.x, 0, transform.forward.z));
+		// 	camPos = Vector3.Normalize(new Vector3(transform.forward.x, 0, transform.forward.z));
 
-			transform.position += camPos * Time.deltaTime * camMoveSpeed;
-		}
-		else if (Input.mousePosition.y < 30)
-		{
-			currentStatus = Status.Panning;
-			ClearFollowTarget();
+		// 	transform.position += camPos * Time.deltaTime * camMoveSpeed;
+		// }
+		// else if (Input.mousePosition.y < 30)
+		// {
+		// 	currentStatus = Status.Panning;
+		// 	ClearFollowTarget();
 			
-			camPos = Vector3.Normalize(new Vector3(-transform.forward.x, 0, -transform.forward.z));
+		// 	camPos = Vector3.Normalize(new Vector3(-transform.forward.x, 0, -transform.forward.z));
 
-			transform.position += camPos * Time.deltaTime * camMoveSpeed;
-		}
-		else if (cvc.m_Follow == null && cvc.m_LookAt == null)
-		{
-			currentStatus = Status.FreeFloating;
-		}
+		// 	transform.position += camPos * Time.deltaTime * camMoveSpeed;
+		// }
+		// else if (cvc.m_Follow == null && cvc.m_LookAt == null)
+		// {
+		// 	currentStatus = Status.FreeFloating;
+		// }
 	}
 
 	//Snaps camera to currentPC

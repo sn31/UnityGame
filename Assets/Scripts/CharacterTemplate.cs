@@ -26,6 +26,8 @@ public class CharacterTemplate : MonoBehaviour
     public Animator animator;
     public float damageDelay;
 
+    public Texture Portrait;
+
   
 
 // Movement variables.

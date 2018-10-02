@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlayableCharacter
   - EnemyCharacter
+  - Portrait
   layers:
   - Default
   - TransparentFX
