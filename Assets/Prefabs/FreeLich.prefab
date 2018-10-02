@@ -114,6 +114,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1435795469137244
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4176527866580758}
+  m_Layer: 0
+  m_Name: Launch Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1487115048056472
 GameObject:
   m_ObjectHideFlags: 1
@@ -438,6 +453,19 @@ Transform:
   m_Father: {fileID: 4703515528438864}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4176527866580758
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1435795469137244}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 225, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4367235226078630}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4216378896327232
 Transform:
   m_ObjectHideFlags: 1
@@ -505,7 +533,8 @@ Transform:
   m_LocalRotation: {x: -0.043163035, y: -0.039431553, z: 0.6787936, w: 0.7319982}
   m_LocalPosition: {x: -50.983036, y: -54.37775, z: -77.06237}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4176527866580758}
   m_Father: {fileID: 4537355614589522}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -698,7 +727,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1426175708880172}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 327.52658, y: 0.014, z: 322.54834}
+  m_LocalPosition: {x: 330.8774, y: 0, z: 350.61423}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4537355614589522}
@@ -901,8 +930,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   portrait: {fileID: 2800000, guid: 14d72a22fded8416c8441a0111a06dbb, type: 3}
-  launchPoint: {fileID: 0}
-  projectile: {fileID: 0}
+  launchPoint: {fileID: 1435795469137244}
+  projectile: {fileID: 1576809718643156, guid: 34f7ec22b27144c7bb27db86f8a5234d, type: 2}
 --- !u!114 &114967103131923704
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -914,7 +943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c995a772642d7ce4cabb3d382a07fbb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  charName: 
   maxHealth: 0
   currentHealth: 0
   armor: 0
@@ -928,7 +957,7 @@ MonoBehaviour:
   targetCharScript: {fileID: 0}
   animator: {fileID: 0}
   damageDelay: 0
-  Portrait: {fileID: 0}
+  portrait: {fileID: 0}
   turnManager: {fileID: 0}
   movementRadius: 0
   actionPoints: 2

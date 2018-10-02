@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class CharacterTemplate : MonoBehaviour
 {
 // Character name
-	public string name;
+	public string charName;
 // Variables to determine health.
     public int maxHealth;
     public int currentHealth;  
@@ -152,8 +152,13 @@ public class CharacterTemplate : MonoBehaviour
 
         // Attack animation here
         animator.SetTrigger("attack");
-
         yield return new WaitForSecondsRealtime(damageDelay);
+
+        if (launchPoint && projectile)
+        {
+            GameObject newProjectile = Instantiate(projectile, launchPoint.transform.position, transform.rotation);
+            // yield return StartCoroutine(newProjectile.GetComponent<ProjectilePath>().TargetLocation(target));
+        }
 
         targetCharScript.TakeDamage(attackDamage);
     }

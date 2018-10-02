@@ -7,7 +7,7 @@ public class MageTemplate : MonoBehaviour {
 
 	CharacterTemplate healthScript;
 // Character name
-	private string name = "Lich";
+	private string charName = "Lich";
 // Base character health.
 	private int maxHealth = 40;
 // Base character armor.
@@ -53,7 +53,7 @@ public class MageTemplate : MonoBehaviour {
 		healthScript.damageDelay = damageDelay;
 		healthScript.attackRange = attackRange;
 
-    healthScript.name = name;
+    healthScript.charName = charName;
 
     healthScript.portrait = portrait;
 

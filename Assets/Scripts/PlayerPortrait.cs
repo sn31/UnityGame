@@ -9,15 +9,17 @@ public class PlayerPortrait : MonoBehaviour
 
 	public List<GameObject> portraits = new List<GameObject>();
 
-    private RawImage img;
+	private RawImage img;
 	private CharacterTemplate target;
      
-    void Start () {
+	void Start () 
+	{
 
-         foreach(GameObject portrait in GameObject.FindGameObjectsWithTag("Portrait")) {
- 
-             portraits.Add(portrait);
-         }			
+		foreach(GameObject portrait in GameObject.FindGameObjectsWithTag("Portrait")) 
+		{
+
+				portraits.Add(portrait);
+		}			
 
 		if (pcList == null)
 		{
@@ -33,7 +35,6 @@ public class PlayerPortrait : MonoBehaviour
 				img.texture = (Texture)target.portrait;
 			}					
 		}	
-
 	}	
 
 	void Update () 

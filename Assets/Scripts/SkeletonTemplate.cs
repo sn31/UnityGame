@@ -8,7 +8,7 @@ public class SkeletonTemplate : MonoBehaviour {
 	CharacterTemplate healthScript;
 
 // Character name
-	private string name = "Skeleton";
+	private string charName = "Skeleton";
 // Base character health.
 	private int maxHealth = 60;
 // Base character armor.
@@ -57,7 +57,7 @@ public class SkeletonTemplate : MonoBehaviour {
 		healthScript.sightRadius = sightRadius;
 		healthScript.attackRange = attackRange;
 
-		healthScript.name = name;
+		healthScript.charName = charName;
 
 		healthScript.portrait = portrait;
 

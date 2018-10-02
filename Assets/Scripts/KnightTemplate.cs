@@ -8,7 +8,7 @@ public class KnightTemplate : MonoBehaviour {
 	CharacterTemplate healthScript;
 
 // Character name
-	private string name = "Footman";
+	private string charName = "Footman";
 // Base character health.
 	private int maxHealth = 100;
 // Base character armor.
@@ -53,7 +53,7 @@ public class KnightTemplate : MonoBehaviour {
 		healthScript.damageDelay = damageDelay;
 		healthScript.attackRange = attackRange;
 
-		healthScript.name = name;
+		healthScript.charName = charName;
 
 		healthScript.portrait = portrait;
 
