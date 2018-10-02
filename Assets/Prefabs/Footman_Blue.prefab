@@ -1039,6 +1039,7 @@ MonoBehaviour:
   dodgeChance: 0
   attackDamage: 0
   targetCharScript: {fileID: 0}
+
   animator: {fileID: 0}
   damageDelay: 0
   movementRadius: 0
