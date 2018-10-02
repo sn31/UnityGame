@@ -157,7 +157,7 @@ public class CharacterTemplate : MonoBehaviour
         if (launchPoint && projectile)
         {
             GameObject newProjectile = Instantiate(projectile, launchPoint.transform.position, transform.rotation);
-            // yield return StartCoroutine(newProjectile.GetComponent<ProjectilePath>().TargetLocation(target));
+            yield return StartCoroutine(newProjectile.GetComponent<ProjectilePath>().TargetLocation(target));
         }
 
         targetCharScript.TakeDamage(attackDamage);

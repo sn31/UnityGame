@@ -96,6 +96,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c73cdd7f51c146cfaff23fc96aa3c93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
+  maxTime: 0
+  currentTime: 0
+  enemyLocation: {x: 0, y: 0, z: 0}
 --- !u!135 &135236535032327190
 SphereCollider:
   m_ObjectHideFlags: 1
