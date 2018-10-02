@@ -745,7 +745,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100048}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 337.97662, y: 0, z: 352.98474}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4395630703995336}
@@ -1032,15 +1032,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c995a772642d7ce4cabb3d382a07fbb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: 
   maxHealth: 0
   currentHealth: 0
   armor: 0
   minDamage: 0
   dodgeChance: 0
+  sightRadius: 0
   attackDamage: 0
+  attackRange: 0
+  launchPoint: {fileID: 0}
+  projectile: {fileID: 0}
   targetCharScript: {fileID: 0}
   animator: {fileID: 0}
   damageDelay: 0
+  Portrait: {fileID: 0}
+  turnManager: {fileID: 0}
   movementRadius: 0
   actionPoints: 2
   isDead: 0
@@ -1057,11 +1064,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 0}
+  characterTemplate: {fileID: 0}
   radius: 0
   isCharacterActive: 0
   isCharacterMoving: 0
+  isAttacking: 0
+  movementRadiusRenderer: {fileID: 0}
   line: {fileID: 0}
+  full: {fileID: 2100000, guid: 44f777148833e8945876556fb0f100d7, type: 2}
+  half: {fileID: 2100000, guid: 7201fe58bcdfb064ea27f9ed771b51f1, type: 2}
+  none: {fileID: 2100000, guid: 8dc2f3f791ff81244a54057426a0371e, type: 2}
   animator: {fileID: 0}
+  initialized: 0
+  attackTarget: {fileID: 0}
+  stopDistance: 0
 --- !u!114 &114359568831115150
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1081,7 +1097,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100048}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 752b6a4c0fcc5754796cf664d26a91ee, type: 3}
   m_Name: 
@@ -1100,13 +1116,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 177dd27c53d23ab4e95e7327d0c9ad9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  armor: 10
-  minDamage: 5
-  dodgeChance: 20
-  movementRadius: 6
-  attackDamage: 20
-  damageDelay: 1
+  portrait: {fileID: 2800000, guid: 6c6c550838f2b406490a5fa4e8d37e23, type: 3}
+  launchPoint: {fileID: 0}
+  projectile: {fileID: 0}
 --- !u!120 &120710692649399078
 LineRenderer:
   m_ObjectHideFlags: 1

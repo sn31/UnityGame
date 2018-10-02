@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 public class CharacterTemplate : MonoBehaviour
 {
+// Character name
+	public string name;
 // Variables to determine health.
     public int maxHealth;
     public int currentHealth;  
@@ -16,15 +18,28 @@ public class CharacterTemplate : MonoBehaviour
 // Chance to avoid damage by character.
     public int dodgeChance;
 
+    // Sight Radius for enemies
+    public float sightRadius;
+
 // Variables for offensive combat.
 // Attack damage variable.
     public int attackDamage;
+// Attack range variable.
+    public float attackRange;
+// Launch point for projectiles
+	public GameObject launchPoint;
+// Projectile prefab
+	public GameObject projectile;
 // Attack target character character script.
     public CharacterTemplate targetCharScript;
 
     // Animator variable
     public Animator animator;
     public float damageDelay;
+
+// Portrait variable
+    public Texture portrait;
+
 
 // Turn Manager variable.
     public TurnManagerScript turnManager;
@@ -116,8 +131,9 @@ public class CharacterTemplate : MonoBehaviour
         }
 
         currentHealth -= currentDamage;
-        Debug.Log(gameObject.name + " took " + currentDamage + " damage.");
-        Debug.Log("Current Health = " + currentHealth);
+        FloatingTextController.CreateFloatingText(currentDamage.ToString(), transform);
+        // Debug.Log(gameObject.name + " took " + currentDamage + " damage.");
+        // Debug.Log("Current Health = " + currentHealth);
         Death();
 
         // Reduce the current health by the damage amount.
@@ -132,7 +148,6 @@ public class CharacterTemplate : MonoBehaviour
 
     public IEnumerator AttackTarget(GameObject target)
     {
-        Debug.Log(gameObject.name + " attacked " + target.name);
         targetCharScript = target.GetComponent<CharacterTemplate>();
 
         // Attack animation here
@@ -141,8 +156,6 @@ public class CharacterTemplate : MonoBehaviour
         yield return new WaitForSecondsRealtime(damageDelay);
 
         targetCharScript.TakeDamage(attackDamage);
-
-        // Trigger attack animation
     }
 
 

@@ -7,18 +7,33 @@ public class KnightTemplate : MonoBehaviour {
 
 	CharacterTemplate healthScript;
 
+// Character name
+	private string name = "Footman";
 // Base character health.
-	public int maxHealth = 100;
+	private int maxHealth = 100;
 // Base character armor.
-	public int armor = 10;
-	public int minDamage = 5;
-	public int dodgeChance = 20;
+	private int armor = 10;
+	private int minDamage = 5;
+	private int dodgeChance = 20;
 // Base character movement.
-	public int movementRadius = 6;
+	private int movementRadius = 8;
 // Base character damage.
-	public int attackDamage = 20;
+	private int attackDamage = 20;
 
-	public float damageDelay = 1.0f;
+	private float damageDelay = 0.5f;
+
+	// Sight radius for detection;
+	private float sightRadius = 13f;
+	
+	private float attackRange = 3.7f;
+
+	public Texture portrait;
+
+	// Launch point for projectiles
+	public GameObject launchPoint;
+
+	// Projectile prefab
+	public GameObject projectile;
 
 	// Use this for initialization
 	void Awake () {
@@ -36,5 +51,16 @@ public class KnightTemplate : MonoBehaviour {
 		healthScript.attackDamage = attackDamage;
 
 		healthScript.damageDelay = damageDelay;
+		healthScript.attackRange = attackRange;
+
+		healthScript.name = name;
+
+		healthScript.portrait = portrait;
+
+		if (launchPoint && projectile)
+		{
+			healthScript.launchPoint = launchPoint;
+			healthScript.projectile = projectile;
+		}
 	}
 }

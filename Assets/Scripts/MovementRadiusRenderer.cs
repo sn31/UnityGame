@@ -15,10 +15,10 @@ public class MovementRadiusRenderer : MonoBehaviour {
 	public int segments = 50;
 
 	//xradius of circle.
-	public float xradius = 8;
+	public float xradius;
 
 	//yradius of circle.
-	public float yradius = 8;
+	public float yradius;
 
 	//Variable to hold the line renderer component.
 	LineRenderer line;

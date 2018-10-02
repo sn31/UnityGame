@@ -52,8 +52,13 @@ public class EnemyMoveScript : MonoBehaviour
   public enum UnitState {None, Moving, Attacking};
   public UnitState currentState;
 
-  // Grabs the animator of this enemy unit.
-    public Animator animator;
+// Grabs the animator of this enemy unit.
+  public Animator animator;
+
+  // Radius for detection.
+  public float sightRadius;
+
+  public float attackRange;
 
 	// Use this for initialization
 	void Start () 
@@ -66,6 +71,7 @@ public class EnemyMoveScript : MonoBehaviour
 
     // Grabs the enemy CharacterTemplate script
     charTemplate = GetComponent<CharacterTemplate>();
+    attackRange = charTemplate.attackRange;
 
     // Gets the animator component.
     animator = gameObject.GetComponent<Animator>();
@@ -93,12 +99,18 @@ public class EnemyMoveScript : MonoBehaviour
 
     // Sets the movementRadius to a default value from character stat.
     // ** NEED TO CHANGE THIS ONCE ENEMY STAT SCRIPT IS COMPLETE **
-    movementRadius = 8;
+    movementRadius = charTemplate.movementRadius;
+
+    sightRadius = charTemplate.sightRadius;
 	}
 	
 	// Update is called once per frame
 	void Update () 
   {
+    if (!isDead)
+    {
+      isDead = charTemplate.isDead;
+    }
     if (pcList == null)
     {
       pcList = turnManager.GetPCList();
@@ -119,6 +131,12 @@ public class EnemyMoveScript : MonoBehaviour
     {
       StopUnit();
     }
+
+    // Checks if the enemy has detected the player.
+    // if (!isAlerted)
+    // {
+    //   DetectionCheck();
+    // }
 	}
 
   // Sets the character to be alerted to the player
@@ -194,13 +212,13 @@ public class EnemyMoveScript : MonoBehaviour
     // ** Minor issue to fix here. Since we are using stoppingDistance, the unit has a 'reach' of 2.35. For example, if we use 8 as the amount of game units the enemy can move, they can attack units 10.35 units away.
     agent.stoppingDistance = distance - movementRadius;
 
-    if (agent.stoppingDistance < 2.35)
+    if (agent.stoppingDistance < attackRange)
     {
       currentState = UnitState.Attacking;
       hasAttacked = false;
 
       // Adds stopping distance so the unit doesn't run into the PC.
-      agent.stoppingDistance = 2.35f;
+      agent.stoppingDistance = attackRange;
 
       agent.SetDestination(nearestPC.transform.position);
     }

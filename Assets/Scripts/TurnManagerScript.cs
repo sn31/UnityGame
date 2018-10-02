@@ -70,6 +70,9 @@ public class TurnManagerScript : MonoBehaviour
     // Set booleans to default values.
     currentEnemyDone = true;
     turnOver = false;
+
+    // Initialize floating text controller.
+    FloatingTextController.Initialize();
 	}
 	
 	// Update is called once per frame.
@@ -163,6 +166,13 @@ public class TurnManagerScript : MonoBehaviour
     //Sets current turn to player
     currentTurn = TurnOwner.Player;
 
+    // Sets each character's action points to 2.
+    foreach (var PC in pcList)
+    {
+      playerCharTemp = PC.GetComponent<CharacterTemplate>();
+      playerCharTemp.actionPoints = 2;
+    }
+
     //Updates bool in Player Camera to true.
     playerCamera.IsPlayerTurn = true;
 
@@ -175,9 +185,6 @@ public class TurnManagerScript : MonoBehaviour
 
     while (playerCharTemp.isDead == true)
     {
-      // ** BUG ** DEAD GUY STILL GETS SELECTED;
-      // StartCoroutine(CheckGameOver());
-      
       currentPCIndex++;
       if (currentPCIndex == pcList.Length)
       {
@@ -208,18 +215,24 @@ public class TurnManagerScript : MonoBehaviour
   IEnumerator MoveCurrentEnemy()
   {
     // Wait period before the start of next unit turn. Adjust as needed.
-    yield return new WaitForSecondsRealtime(1);
     if (currentEnemyIndex >= enemyList.Length)
     {
+      yield return new WaitForSecondsRealtime(1);
       StartPlayerTurn();
       Debug.Log("Player Turn Starting");
       yield break;
     }
     currentEnemy = enemyList[currentEnemyIndex];
     enemyMoveScript = currentEnemy.GetComponent<EnemyMoveScript>();
-    if (enemyMoveScript.isDead == false)
+    if (enemyMoveScript.isDead == false && enemyMoveScript.isAlerted == true)
     {
+      yield return new WaitForSecondsRealtime(1);
       enemyMoveScript.FindNearestPC();
+    }
+    else
+    {
+      Debug.Log("Not alerted");
+      currentEnemyDone = true;
     }
     currentEnemyIndex++;
   }
@@ -250,7 +263,7 @@ public class TurnManagerScript : MonoBehaviour
   public IEnumerator SetGameOver()
   {
     Debug.Log("GAME OVER!");
-    yield return new WaitForSecondsRealtime(4);
+    yield return new WaitForSecondsRealtime(3);
     SceneManager.LoadScene( SceneManager.GetActiveScene().name );
   }
 }

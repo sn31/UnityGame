@@ -7,19 +7,35 @@ public class SkeletonTemplate : MonoBehaviour {
 
 	CharacterTemplate healthScript;
 
+// Character name
+	private string name = "Skeleton";
 // Base character health.
-	public int maxHealth = 100;
+	private int maxHealth = 60;
 // Base character armor.
-	public int armor = 10;
-	public int minDamage = 5;
-	public int dodgeChance = 20;
+	private int armor = 5;
+	private int minDamage = 5;
+	private int dodgeChance = 10;
 // Base character movement.
-	public int movementRadius = 6;
+	private int movementRadius = 6;
 // Base character damage.
-	public int attackDamage = 50;
+	private int attackDamage = 15;
 
 	// Seconds to wait before dealing damage
-	public float damageDelay = 1.0f;
+	private float damageDelay = 1.0f;
+
+	// Sight radius for detection;
+	private float sightRadius = 12f;
+
+	// Attack range
+	private float attackRange = 2.35f;
+
+	// Launch point for projectiles
+	public GameObject launchPoint;
+
+	// Projectile prefab
+	public GameObject projectile;
+
+	public Texture portrait;
 
 	// Use this for initialization
 	void Awake () {
@@ -37,6 +53,19 @@ public class SkeletonTemplate : MonoBehaviour {
 		healthScript.attackDamage = attackDamage;
 		
 		healthScript.damageDelay = damageDelay;
+
+		healthScript.sightRadius = sightRadius;
+		healthScript.attackRange = attackRange;
+
+		healthScript.name = name;
+
+		healthScript.portrait = portrait;
+
+		if (launchPoint && projectile)
+		{
+			healthScript.launchPoint = launchPoint;
+			healthScript.projectile = projectile;
+		}
 	}
 }
 
