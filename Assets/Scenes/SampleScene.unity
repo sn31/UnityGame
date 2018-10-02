@@ -837,6 +837,7 @@ MonoBehaviour:
   currentEnemyDone: 0
   currentEnemyIndex: 0
   enemyMoveScript: {fileID: 0}
+  playerCharTemp: {fileID: 0}
 --- !u!4 &882848579
 Transform:
   m_ObjectHideFlags: 0
@@ -2264,7 +2265,6 @@ MonoBehaviour:
   currentAction: 0
   turnManager: {fileID: 0}
   IsPlayerTurn: 0
-  CamMovement: 0
 --- !u!1001 &1814062276
 Prefab:
   m_ObjectHideFlags: 0
@@ -2589,7 +2589,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Radius: 4
   ToSpawnPlayer:
-  - {fileID: 1252427878642282, guid: 3e4a81e1f51af4c899304ff69e09418d, type: 2}
+  - {fileID: 100048, guid: 272ec112bddec644a8af6599107e74f7, type: 2}
   SpawnLocationPlayer: {fileID: 1043652913}
   AverageEnemies: 4
   AverageEnemyRange: 2

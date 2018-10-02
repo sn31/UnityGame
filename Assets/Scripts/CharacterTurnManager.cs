@@ -8,7 +8,7 @@ public class CharacterTurnManager : MonoBehaviour {
   public GameObject moveRadius;
 
 	void Start () {
-		moveRadius = transform.Find("MoveDistanceRadius").gameObject;
+		
 	}
 
   public void SetActive()

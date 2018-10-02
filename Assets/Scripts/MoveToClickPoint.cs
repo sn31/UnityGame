@@ -29,6 +29,9 @@ public class MoveToClickPoint : MonoBehaviour {
 
   //Line renderer variable
   public LineRenderer line;
+
+  // Animator variable
+  public Animator animator;
   
   void Awake() {
     //Gets the NavMesh of the object this script is attached to.
@@ -42,6 +45,9 @@ public class MoveToClickPoint : MonoBehaviour {
 
     //Sets the character as inactive by default.
     SetCharacterInactive();
+
+    //Grabs animator component.
+    animator = gameObject.GetComponent<Animator>();
   }
   
   void Update() 
@@ -53,6 +59,7 @@ public class MoveToClickPoint : MonoBehaviour {
 
       //Update camera variable
       playerCamera.isCharMoving = false;
+      animator.SetBool("running", false);
     }
 
     if (Input.GetMouseButtonDown(1)) 
@@ -107,6 +114,7 @@ public class MoveToClickPoint : MonoBehaviour {
           agent.destination = hit.point;
           playerCamera.MoveCameraToCurrentPC();
           isCharacterMoving = true;
+          animator.SetBool("running", true);
 
           //Update camera variable
           playerCamera.isCharMoving = true;

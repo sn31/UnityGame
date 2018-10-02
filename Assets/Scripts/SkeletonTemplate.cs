@@ -18,6 +18,9 @@ public class SkeletonTemplate : MonoBehaviour {
 // Base character damage.
 	public int attackDamage = 50;
 
+	// Seconds to wait before dealing damage
+	public float damageDelay = 1.0f;
+
 	// Use this for initialization
 	void Awake () {
 		healthScript = GetComponent<CharacterTemplate>();
@@ -32,6 +35,8 @@ public class SkeletonTemplate : MonoBehaviour {
 		healthScript.movementRadius = movementRadius;
 
 		healthScript.attackDamage = attackDamage;
+		
+		healthScript.damageDelay = damageDelay;
 	}
 }
 
