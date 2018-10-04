@@ -1,7 +1,7 @@
 # Unity Game 
 
 ##### Epicodus Group Project C# 10/04/2018.
-_by Ryan Lee, Brian Nelson
+_by Ryan Lee, Brian Nelson_
 
 ## Description
 
