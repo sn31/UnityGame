@@ -9,7 +9,7 @@ Quad Battle is a single player, turn base movement and combat game that uses the
  1) Turn base movement for player and AI that using Camera Ray casting.
  2) Spawn points that generate a random number of enemies.
 
-![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+![Quad Battle](SCREENSHOT.png)
 
 ## How to Play - Controls
 
@@ -31,9 +31,9 @@ Kill the Bull King to win the game.
 
 ## Credits
 
-The following assets were used in making of this demo game:
+**The following assets were used in making of this demo game:**
 
-The Playable Characters
+**The Playable Characters**
 
 * "Mini Legion Footman Handpainted"
 * "Mini Legion Lich Handpainted"
@@ -42,7 +42,7 @@ The Playable Characters
 
 All Playable Characters created by [Dungeon Mason](https://assetstore.unity.com/publishers/23554)
 
-The Enemies
+**The Enemies**
 
 ["Fantasy Monster - Skeleton" by Teamjoker](https://assetstore.unity.com/publishers/12724)
 
@@ -52,13 +52,13 @@ The Enemies
 
 ["Toon Rock" by MeshSmith](https://assetstore.unity.com/publishers/38396)
 
-Terrian
+**Terrain**
 
 ["Fantasy Landscape" by Pxltiger](https://assetstore.unity.com/publishers/11247)
 ["Medieval Defense, Low-Poly, All maps" by Hit Jones](https://assetstore.unity.com/publishers/8294)
 ["Make Your Fantasy Game - Lite" by xiaolianhuastudio](https://assetstore.unity.com/publishers/2752)
 
-Audio
+**Audio**
 
 ["Universal Sound FX" by Imphenzia](https://assetstore.unity.com/publishers/479)
 
